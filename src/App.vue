@@ -1,4 +1,5 @@
 <template>
+<div class="body">
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="glossy">
       <q-toolbar>
@@ -76,19 +77,23 @@
     </q-drawer>
 
     <q-page-container>
-      <HelloWorld />
+<div class="intro-text q-pl-md">
+<h2> Explore. Find. <br> Learn.</h2>
+</div>
+
+      <TopSongs />
     </q-page-container>
   </q-layout>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TopSongs from './components/TopSongs.vue'
 export default {
   name: 'LayoutDefault',
 
   components: {
-    HelloWorld
+    TopSongs
   },
 
   data () {
@@ -99,5 +104,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.body{
+  background: #000;
+  color: #fff;
+}
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.intro-text{
+  h2{
+  font-weight: bold;
+  font-size: 36px;
+  }
+
+}
 </style>
