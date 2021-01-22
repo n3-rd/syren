@@ -79,32 +79,12 @@
             :key="track.title"
           >
           <q-popup-proxy>
-<q-card class="bg-dark text-white fixed-top-right" style="width: 30%;z-index: 999;">
-              <q-bar> </q-bar>
 
-              <q-card-section>
-                
-                <div class="q-my-lg">
-                <div class="text-h6 text-center">{{track.title}}</div>
-                <div class="text-h6 text-weight-light text-center">
-                {{track.artist.name}}
-                </div>
-                </div>
-                <div>
-                  <q-img :src="track.album.cover_big" width="100%" >
-              <div class="absolute-top-left cursor-pointer" @click="playSong(track.preview)"><q-icon name="eva-volume-up-outline"/></div>
+<IndividualSong :trackTitle="track.title" :trackArtist="track.artist.name"
+:trackCover="track.album.cover_big"
+:trackPreview="track.preview"
+/>
 
-                  </q-img>
-                </div>
-              </q-card-section>
-
-              <q-card-section class="q-pt-none">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                repellendus sit voluptate voluptas eveniet porro. Rerum
-                blanditiis perferendis totam, ea at omnis vel numquam
-                exercitationem aut, natus minima, porro labore.
-              </q-card-section>
-            </q-card>
           </q-popup-proxy>
             <q-img
               :src="track.album.cover_big"
@@ -178,8 +158,10 @@
 
 <script>
 import { Howl, Howler } from "howler";
+import IndividualSong from './IndividualSong'
 export default {
   components: {
+    IndividualSong
   },
   data() {
     return {
