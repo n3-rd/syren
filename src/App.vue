@@ -77,7 +77,7 @@
     </q-drawer>
 
     <q-page-container>
-<div class="intro-text q-pl-md">
+<div class="intro-text q-pl-md mobile-only">
 <h2> Explore. Find. <br> Learn.</h2>
 </div>
 
