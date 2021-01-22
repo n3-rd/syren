@@ -145,5 +145,7 @@ IndividualSong
 </script>
 
 <style lang="scss">
-
+.mobile-preview-icon {
+  align-self: center;
+}
 </style>
