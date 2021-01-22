@@ -1,19 +1,18 @@
 <template>
   <div>
-
-<TopTracks/>
-    <TopAlbums/>
+    <TopTracks />
+    <TopAlbums />
   </div>
 </template>
 
 <script>
 import { Howl, Howler } from "howler";
-import TopTracks from './TopTracks'
-import TopAlbums from './TopAlbums'
+import TopTracks from "./TopTracks";
+import TopAlbums from "./TopAlbums";
 export default {
   components: {
     TopTracks,
-    TopAlbums
+    TopAlbums,
   },
   data() {
     return {
@@ -34,9 +33,6 @@ export default {
     },
   },
   mounted() {
-   
-   
-
     // get basic user info
     this.axios
       .get("https://thingproxy.freeboard.io/fetch/https://api.deezer.com/infos")
@@ -49,5 +45,4 @@ export default {
 * {
   color: #fff !important;
 }
-
 </style>

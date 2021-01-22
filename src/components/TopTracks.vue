@@ -1,15 +1,17 @@
 <template>
-    <div>
-
-<q-expansion-item expand-separator label="Top Tracks" default-opened>
+  <div>
+    <q-expansion-item expand-separator label="Top Tracks" default-opened>
       <!-- top tracks section (mobile) -->
       <q-list class="mobile-only">
         <q-item v-for="track in topTracksData" :key="track.title">
           <q-popup-proxy style="padding: 0 !important">
-            <IndividualSong :trackTitle="track.title" :trackArtist="track.artist.name"
-:trackCoverSmall="track.album.cover_small"
-:trackPreview="track.preview"
-/>
+            <IndividualSong
+              :trackTitle="track.title"
+              :trackArtist="track.artist.name"
+              :trackCoverSmall="track.album.cover_small"
+              :trackCoverBig="track.album.cover_big"
+              :trackPreview="track.preview"
+            />
           </q-popup-proxy>
 
           <q-item-section top avatar>
@@ -44,29 +46,25 @@
       <!-- top tracks section (desktop) -->
 
       <div class="desktop-only q-px-lg">
-
         <div class="row">
-        <div class="flex-center" v-show="!topTracksLoaded">
-          <q-spinner
-        color="primary"
-        size="3em"
-        :thickness="2"
-      />
-      </div>
-         
+          <div class="flex-center" v-show="!topTracksLoaded">
+            <q-spinner color="primary" size="3em" :thickness="2" />
+          </div>
+
           <div
             class="col-4 q-px-md q-pb-xl"
             v-for="track in topTracksData"
             :key="track.title"
           >
-          <q-popup-proxy>
-
-<IndividualSong :trackTitle="track.title" :trackArtist="track.artist.name"
-:trackCover="track.album.cover_big"
-:trackPreview="track.preview"
-/>
-
-          </q-popup-proxy>
+            <q-popup-proxy>
+              <IndividualSong
+                :trackTitle="track.title"
+                :trackArtist="track.artist.name"
+                :trackCoverSmall="track.album.cover_small"
+                :trackCoverBig="track.album.cover_big"
+                :trackPreview="track.preview"
+              />
+            </q-popup-proxy>
             <q-img
               :src="track.album.cover_big"
               :img-style="{ borderRadius: '15px' }"
@@ -85,7 +83,11 @@
               </template>
               <!-- music indicator overlay -->
               <div v-show="track.explicit_lyrics">
-              <div class="absolute-top-left text-weight-bold text-center relative-position">E<q-tooltip>May contain explicit lyrics</q-tooltip></div>
+                <div
+                  class="absolute-top-left text-weight-bold text-center relative-position"
+                >
+                  E<q-tooltip>May contain explicit lyrics</q-tooltip>
+                </div>
               </div>
               <!-- track details overlay -->
               <div class="absolute-bottom text-subtitle1 text-center">
@@ -104,25 +106,24 @@
         </div>
       </div>
     </q-expansion-item>
-
-    </div>
+  </div>
 </template>
 
 <script>
 import { Howl, Howler } from "howler";
-import IndividualSong from './IndividualSong'
+import IndividualSong from "./IndividualSong";
 export default {
-    components: {
-IndividualSong
-    },
-    data(){
-        return{
+  components: {
+    IndividualSong,
+  },
+  data() {
+    return {
       topTracksData: [],
-      topTracksLoaded: false
-        }
-    },
-    methods: {
- playSong: function (songPreview) {
+      topTracksLoaded: false,
+    };
+  },
+  methods: {
+    playSong: function (songPreview) {
       this.previewPlaying = true;
       Howler.stop();
       var sound = new Howl({
@@ -131,17 +132,17 @@ IndividualSong
 
       sound.play();
     },
-    },
-    mounted(){
-         // get top tracks
+  },
+  mounted() {
+    // get top tracks
     this.axios
       .get("https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart")
       .then((response) => {
-        this.topTracksData = response.data.tracks.data
-        this.topTracksLoaded = true
-        })
-    }
-}
+        this.topTracksData = response.data.tracks.data;
+        this.topTracksLoaded = true;
+      });
+  },
+};
 </script>
 
 <style lang="scss">

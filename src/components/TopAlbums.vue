@@ -1,8 +1,6 @@
 <template>
-
- <div>
-
-<!-- top albums -->
+  <div>
+    <!-- top albums -->
     <h5 class="q-my-sm q-pl-md q-mt-xl">Top Albums</h5>
 
     <q-list>
@@ -29,30 +27,25 @@
 
       <q-separator spaced inset="item" />
     </q-list>
-
- </div>
-
+  </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
+  data() {
+    return {
       topAlbumsData: [],
-        }
-    },
-    methods: {
-        
-    },
-    mounted(){
-         // get top albums
+    };
+  },
+  methods: {},
+  mounted() {
+    // get top albums
     this.axios
       .get("https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart")
       .then((response) => (this.topAlbumsData = response.data.albums.data));
-    }
-}
+  },
+};
 </script>
 
 <style lang="scss">
-
 </style>
