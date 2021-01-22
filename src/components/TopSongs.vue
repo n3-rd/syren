@@ -84,12 +84,17 @@
 
               <q-card-section>
                 
-                <div class="text-h6 text-center q-mt-lg">{{track.title}}</div>
+                <div class="q-my-lg">
+                <div class="text-h6 text-center">{{track.title}}</div>
                 <div class="text-h6 text-weight-light text-center">
                 {{track.artist.name}}
                 </div>
+                </div>
                 <div>
-                  <q-img :src="track.album.cover_big" width="100%" />
+                  <q-img :src="track.album.cover_big" width="100%" >
+              <div class="absolute-top-left cursor-pointer" @click="playSong(track.preview)"><q-icon name="eva-volume-up-outline"/></div>
+
+                  </q-img>
                 </div>
               </q-card-section>
 
@@ -118,7 +123,9 @@
                 </div>
               </template>
               <!-- music indicator overlay -->
-              <div class="absolute-top-left"><q-icon name="ion-musical-notes"/></div>
+              <div v-show="track.explicit_lyrics">
+              <div class="absolute-top-left text-weight-bold text-center relative-position">E<q-tooltip>May contain explicit lyrics</q-tooltip></div>
+              </div>
               <!-- track details overlay -->
               <div class="absolute-bottom text-subtitle1 text-center">
                 {{ track.artist.name }}
