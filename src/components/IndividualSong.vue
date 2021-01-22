@@ -2,11 +2,12 @@
     
 <div>
 
+<div class="desktop-only">
 <q-card class="bg-dark text-white fixed-top-right" style="width: 30%;z-index: 999;">
               <q-bar> </q-bar>
+                <q-scroll-area style="height: 80vh">
 
               <q-card-section>
-                
                 <div class="q-my-lg">
                 <div class="text-h6 text-center">{{trackTitle}}</div>
                 <div class="text-h6 text-weight-light text-center">
@@ -24,7 +25,31 @@
               <q-card-section class="q-pt-none song-lyrics">
             {{songLyrics}}
               </q-card-section>
+                </q-scroll-area>
             </q-card>
+
+
+</div>
+
+<div class="mobile-only">
+            <q-card class="bg-dark text-white" style="width: 100%">
+              <q-bar> </q-bar>
+
+              <q-card-section>
+                <div>
+                  <q-img :src="trackCoverSmall" width="100%" />
+                </div>
+                <div class="text-h6 text-center">{{ trackTitle }}</div>
+                <div class="text-h6 text-weight-light text-center">
+                  {{ trackArtist }}
+                </div>
+              </q-card-section>
+
+              <q-card-section class="q-pt-none">
+                {{songLyrics}}
+              </q-card-section>
+            </q-card>
+</div>
 
 
 </div>
@@ -40,7 +65,8 @@ export default {
        'trackTitle',
        'trackArtist',
        'trackCover',
-       'trackPreview'
+       'trackPreview',
+       'trackCoverSmall',
    ],
    data(){
 return{
@@ -71,7 +97,7 @@ this.songLyrics = response.data.lyrics
 
 <style lang="scss">
 .song-lyrics{
-        text-align: center;
-    white-space: break-spaces;
+        text-align: center!important;
+    white-space: break-spaces!important;
 }
 </style>
