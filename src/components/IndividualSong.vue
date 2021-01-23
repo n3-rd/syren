@@ -7,7 +7,7 @@
         style="width: 30%; z-index: 999"
       >
         <q-bar> </q-bar>
-        <q-scroll-area style="height: 80vh">
+        <q-scroll-area style="height: 100vh">
           <q-card-section>
             <div class="q-my-lg">
               <div class="text-h6 text-center">{{ trackTitle }}</div>
@@ -16,7 +16,7 @@
               </div>
             </div>
             <div>
-              <q-img :src="trackCover" width="100%">
+              <q-img :src="trackCoverBig" width="100%">
                 <div
                   class="absolute-top-left cursor-pointer"
                   @click="playSong(trackPreview)"
@@ -51,6 +51,9 @@
 
         <q-card-section class="q-pt-none song-lyrics">
           {{ songLyrics }}
+          <div v-if="lyricsNone">
+oops,we didn't get that
+          </div>
         </q-card-section>
       </q-card>
     </div>
@@ -72,6 +75,7 @@ export default {
   data() {
     return {
       songLyrics: "",
+      lyricsNone: false,
     };
   },
   methods: {
@@ -96,6 +100,9 @@ export default {
       )
       .then((response) => {
         this.songLyrics = response.data.lyrics;
+        if(this.songLyrics == ''){
+            this.lyricsNone = true
+        }
       });
   },
 };
