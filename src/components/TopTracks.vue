@@ -45,7 +45,7 @@
 
       <!-- top tracks section (desktop) -->
 
-      <div class="gt-md q-px-lg">
+      <div class="gt-sm q-px-lg">
         <div class="row">
           <div class="flex-center" v-show="!topTracksLoaded">
             <q-spinner color="primary" size="3em" :thickness="2" />
