@@ -2,7 +2,7 @@
   <div>
     <q-expansion-item expand-separator label="Top Tracks" default-opened>
       <!-- top tracks section (mobile) -->
-      <q-list class="mobile-only">
+      <q-list class="lt-md">
         <q-item v-for="track in topTracksData" :key="track.title">
           <q-popup-proxy style="padding: 0 !important">
             <IndividualSong
@@ -45,7 +45,7 @@
 
       <!-- top tracks section (desktop) -->
 
-      <div class="desktop-only q-px-lg">
+      <div class="gt-md q-px-lg">
         <div class="row">
           <div class="flex-center" v-show="!topTracksLoaded">
             <q-spinner color="primary" size="3em" :thickness="2" />
