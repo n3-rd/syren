@@ -18,34 +18,26 @@
       <q-list padding>
         <q-item clickable v-ripple>
           <q-item-section avatar>
-            <q-icon name="inbox" />
+            <q-icon name="eva-home-outline" />
           </q-item-section>
 
-          <q-item-section> Inbox </q-item-section>
+          <q-item-section> Home </q-item-section>
         </q-item>
 
         <q-item active clickable v-ripple>
           <q-item-section avatar>
-            <q-icon name="star" />
+            <q-icon name="eva-person-outline" />
           </q-item-section>
 
-          <q-item-section> Star </q-item-section>
+          <q-item-section> Search Artist </q-item-section>
         </q-item>
 
         <q-item clickable v-ripple>
           <q-item-section avatar>
-            <q-icon name="send" />
+            <q-icon name="eva-book-outline" />
           </q-item-section>
 
-          <q-item-section> Send </q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="drafts" />
-          </q-item-section>
-
-          <q-item-section> Drafts </q-item-section>
+          <q-item-section> Search Album </q-item-section>
         </q-item>
       </q-list>
     </q-scroll-area>
