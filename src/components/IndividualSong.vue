@@ -29,6 +29,9 @@
 
           <q-card-section class="q-pt-none song-lyrics">
             {{ songLyrics }}
+             <div v-show="lyricsNone = true">
+oops,we didn't get that
+          </div>
           </q-card-section>
         </q-scroll-area>
       </q-card>
@@ -51,7 +54,7 @@
 
         <q-card-section class="q-pt-none song-lyrics">
           {{ songLyrics }}
-          <div v-if="lyricsNone">
+          <div v-show="lyricsNone = true">
 oops,we didn't get that
           </div>
         </q-card-section>
@@ -89,7 +92,11 @@ export default {
       sound.play();
     },
   },
+  beforeUpdate(){
+this.lyricsNone = false
+  },
   created() {
+    
     this.axios
       .get(
         "https://api.lyrics.ovh/v1/" +
@@ -101,7 +108,10 @@ export default {
       .then((response) => {
         this.songLyrics = response.data.lyrics;
         if(this.songLyrics == ''){
+          setTimeout(function(){
             this.lyricsNone = true
+
+          }, 3000)
         }
       });
   },
