@@ -1,86 +1,89 @@
 <template>
-<div class="body">
-  <q-layout view="lHh Lpr lFf">
-    <q-header>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
-          icon="ion-menu"
-        />
+  <div class="body">
+    <q-layout view="lHh Lpr lFf">
+      <q-header>
+        <q-toolbar class="bg-dark">
+          <q-btn
+            flat
+            dense
+            round
+            @click="leftDrawerOpen = !leftDrawerOpen"
+            aria-label="Menu"
+            icon="ion-menu"
+          />
 
-        <q-toolbar-title>
-          Syren App
-        </q-toolbar-title>
-      </q-toolbar>
-      <div class="q-px-lg q-pt-xl q-mb-md">
-      <div class="text-h4">Learn.Explore.</div>
-       <div class="text-h4">Find.</div>
-      <div class="text-subtitle1">{{ todaysDate }}</div>
-      </div>
-      <q-img
-      src="https://cdn.pixabay.com/photo/2015/03/26/09/58/headphones-690685__340.jpg " width="100%" height="100%"
-      class="header-image absolute-top" />
-       
-    </q-header>
+          <q-toolbar-title> Syren </q-toolbar-title>
+        </q-toolbar>
+      </q-header>
 
-  <q-drawer
+      <q-drawer
         v-model="leftDrawerOpen"
         show-if-above
         :width="200"
         :breakpoint="400"
+        class="bg-black"
       >
-      <Drawer/>
+        <Drawer />
       </q-drawer>
 
-    <q-page-container>
-<div class="intro-text q-pl-md lt-sm">
-<h2> Explore. Find. <br> Learn.</h2>
-</div>
+      <q-page-container>
+        <div class="intro-text q-pl-md lt-sm">
+          <h2>
+            Explore. Find. <br />
+            Learn.
+          </h2>
+        </div>
 
-      <TopSongs />
-    </q-page-container>
-  </q-layout>
-</div>
+        <div class="headphones-bg q-py-lg q-mx-lg q-my-lg">
+          <div class="q-px-lg q-pt-xl q-mb-md">
+            <div class="text-h4">Learn.Explore.</div>
+            <div class="text-h4">Find.</div>
+            <div class="text-subtitle1">{{ todaysDate }}</div>
+          </div>
+        </div>
+
+        <TopSongs />
+      </q-page-container>
+    </q-layout>
+  </div>
 </template>
 
 <script>
-import TopSongs from './components/TopSongs.vue'
-import Drawer from './components/Drawer'
-import { date } from 'quasar'
+import TopSongs from "./components/TopSongs.vue";
+import Drawer from "./components/Drawer";
+import { date } from "quasar";
 
 export default {
-  name: 'LayoutDefault',
+  name: "LayoutDefault",
 
   components: {
     TopSongs,
-    Drawer
+    Drawer,
   },
 
-  data () {
+  data() {
     return {
-      leftDrawerOpen: false
-    }
+      leftDrawerOpen: false,
+    };
   },
   computed: {
     todaysDate() {
-      let timeStamp = Date.now()
-      return date.formatDate(timeStamp, 'dddd D MMMM')
-    }
-  }
-}
+      let timeStamp = Date.now();
+      return date.formatDate(timeStamp, "dddd D MMMM");
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-.body{
+.body {
   background: #000;
   color: #fff;
 }
-
-.header-image{
+.bg-black {
+  background: #000 !important;
+}
+.header-image {
   //height: 100%;
   z-index: -1;
   opacity: 0.99;
@@ -88,13 +91,21 @@ export default {
 }
 
 * {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.intro-text{
-  h2{
-  font-weight: bold;
-  font-size: 36px;
+.intro-text {
+  h2 {
+    font-weight: bold;
+    font-size: 36px;
   }
-
+}
+.headphones-bg {
+  background: url("https://cdn.pixabay.com/photo/2015/03/26/09/58/headphones-690685__340.jpg");
+  border-radius: 25px;
+  background-size: cover;
+}
+body > div.body > div > div.q-drawer-container.bg-black > aside > div {
+  background: black;
+  color: #fff !important;
 }
 </style>
