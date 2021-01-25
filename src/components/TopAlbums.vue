@@ -5,6 +5,32 @@
 
     <q-list>
       <q-item v-for="album in topAlbumsData" :key="album.title">
+
+        <q-popup-proxy>
+          
+  <div class="lt-md">
+      <q-card class="bg-dark text-white" style="width: 80vw">
+        <q-bar>
+          <div class="text-center">
+{{album.record_type}}
+          </div>
+           </q-bar>
+
+        <q-card-section>
+          <div>
+            <q-img :src="album.cover_big"/>
+          </div>
+          <div class="text-h6 text-center">{{ album.title }}</div>
+          <div class="text-h6 text-weight-light text-center">
+            {{ album.artist.name }}
+          </div>
+        </q-card-section>
+      </q-card>
+    </div>
+
+        </q-popup-proxy>
+
+
         <q-item-section top avatar>
           <q-avatar square rounded>
             <img

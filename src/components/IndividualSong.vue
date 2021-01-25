@@ -44,7 +44,14 @@ oops,we didn't get that
 
         <q-card-section>
           <div>
-            <q-img :src="trackCoverBig" width="100%" />
+            <q-img :src="trackCoverBig" width="100%">
+                <div
+                  class="absolute-top-left cursor-pointer"
+                  @click="playSong(trackPreview)"
+                >
+                  <q-icon name="eva-volume-up-outline" />
+                </div>
+              </q-img>
           </div>
           <div class="text-h6 text-center">{{ trackTitle }}</div>
           <div class="text-h6 text-weight-light text-center">
