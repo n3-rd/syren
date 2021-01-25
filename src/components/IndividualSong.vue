@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Desktop song popup -->
-    <div class="desktop-only">
+    <div class="gt-sm">
       <q-card
         class="bg-dark text-white fixed-top-right"
         style="width: 30%; z-index: 999"
@@ -38,7 +38,7 @@ oops,we didn't get that
     </div>
 
     <!-- mobile song popup -->
-    <div class="mobile-only">
+    <div class="lt-md">
       <q-card class="bg-dark text-white" style="width: 100%">
         <q-bar> </q-bar>
 

@@ -27,12 +27,7 @@
       </q-drawer>
 
       <q-page-container>
-        <div class="intro-text q-pl-md lt-sm">
-          <h2>
-            Explore. Find. <br />
-            Learn.
-          </h2>
-        </div>
+       
 
         <div class="headphones-bg q-py-lg q-mx-lg q-my-lg">
           <div class="q-px-lg q-pt-xl q-mb-md">
