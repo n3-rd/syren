@@ -114,7 +114,7 @@ this.lyricsNone = false
       )
       .then((response) => {
         this.songLyrics = response.data.lyrics;
-        if(this.songLyrics == ''){
+        if(this.songLyrics == null){
           setTimeout(function(){
             this.lyricsNone = true
 
