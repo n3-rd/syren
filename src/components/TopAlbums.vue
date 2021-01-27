@@ -10,25 +10,12 @@
 
         <q-popup-proxy>
           
-  <div class="lt-md">
-      <q-card class="bg-dark text-white" style="width: 80vw">
-        <q-bar>
-          <div class="text-center">
-{{album.record_type}}
-          </div>
-           </q-bar>
-
-        <q-card-section>
-          <div>
-            <q-img :src="album.cover_big"/>
-          </div>
-          <div class="text-h6 text-center">{{ album.title }}</div>
-          <div class="text-h6 text-weight-light text-center">
-            {{ album.artist.name }}
-          </div>
-        </q-card-section>
-      </q-card>
-    </div>
+ <IndividualAlbum
+ :albumRecordType="album.record_type"
+ :AlbumCoverBig="album.cover_big"
+ :AlbumTitle="album.title"
+ :AlbumArtist="album.artist.name"
+ />
 
         </q-popup-proxy>
 
@@ -70,29 +57,12 @@
               :key="album.title"
           >
             <q-popup-proxy>
-    <div class="gt-sm">
-      <q-card
-        class="bg-dark text-white fixed-top-right"
-        style="width: 30%; z-index: 999"
-      >
-        <q-bar> </q-bar>
-        <q-scroll-area style="height: 100vh">
-          <q-card-section>
-            <div class="q-my-lg">
-              <div class="text-h6 text-center">{{album.title}}</div>
-              <div class="text-h6 text-weight-light text-center">
-                {{ album.artist.name }}
-              </div>
-            </div>
-            <div>
-                         <q-img :src="album.cover_big"/>
-
-               
-            </div>
-          </q-card-section>
-        </q-scroll-area>
-      </q-card>
-    </div>
+  <IndividualAlbum
+ :albumRecordType="album.record_type"
+ :AlbumCoverBig="album.cover_big"
+ :AlbumTitle="album.title"
+ :AlbumArtist="album.artist.name"
+ />
             </q-popup-proxy>
             <q-img
               :src="album.cover_big"
@@ -136,7 +106,11 @@
 </template>
 
 <script>
+import IndividualAlbum from  './IndividualAlbum'
 export default {
+  components: {
+IndividualAlbum
+  },
   data() {
     return {
       topAlbumsData: [],
