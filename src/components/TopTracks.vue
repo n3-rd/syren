@@ -136,7 +136,7 @@ export default {
   mounted() {
     // get top tracks
     this.axios
-      .get("https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart")
+      .get("https://api.deezer.com/chart")
       .then((response) => {
         this.topTracksData = response.data.tracks.data;
         this.topTracksLoaded = true;

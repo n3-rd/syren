@@ -35,7 +35,7 @@ export default {
   mounted() {
     // get basic user info
     this.axios
-      .get("https://thingproxy.freeboard.io/fetch/https://api.deezer.com/infos")
+      .get("https://api.deezer.com/infos")
       .then((response) => (this.userInfo = response.data.country));
   },
 };

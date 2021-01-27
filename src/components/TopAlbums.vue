@@ -146,7 +146,7 @@ export default {
   mounted() {
     // get top albums
     this.axios
-      .get("https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart")
+      .get("https://api.deezer.com/chart")
       .then((response) => (this.topAlbumsData = response.data.albums.data));
   },
 };
