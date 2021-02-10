@@ -128,15 +128,15 @@
     
  <q-item v-for="artistInfo in artistData"
           :key="artistInfo.title" v-ripple>
-          <!-- <q-popup-proxy style="padding: 0 !important">
+          <q-popup-proxy style="padding: 0 !important">
             <IndividualSong
-              :trackTitle="track.title"
-              :trackArtist="track.artist.name"
-              :trackCoverSmall="track.album.cover_small"
-              :trackCoverBig="track.album.cover_big"
-              :trackPreview="track.preview"
+              :trackTitle="artistInfo.title"
+              :trackArtist="artistInfo.artist.name"
+              :trackCoverSmall="artistInfo.album.cover_small"
+              :trackCoverBig="artistInfo.album.cover_big"
+              :trackPreview="artistInfo.preview"
             />
-          </q-popup-proxy> -->
+          </q-popup-proxy>
 
           <q-item-section top avatar>
             <q-avatar square rounded>
@@ -181,8 +181,11 @@
 
 <script>
 import { Howl, Howler } from "howler";
-
+import IndividualSong from '../IndividualSong'
 export default {
+  components: {
+IndividualSong
+  },
   data() {
     return {
       searchArtistDialog: false,
