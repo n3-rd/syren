@@ -1,5 +1,8 @@
 <template>
   <div>
+
+<SearchArtist/>
+
     <q-scroll-area>
       <q-img
         src="https://cdn.quasar.dev/img/material.png"
@@ -24,7 +27,7 @@
           <q-item-section> Home </q-item-section>
         </q-item>
 
-        <q-item active clickable v-ripple>
+        <q-item active clickable v-ripple @click="ss">
           <q-item-section avatar>
             <q-icon name="eva-person-outline" />
           </q-item-section>
@@ -43,6 +46,25 @@
     </q-scroll-area>
   </div>
 </template>
+<script>
+import SearchArtist from './search_components/SearchArtist'
+
+export default {
+  components: {
+SearchArtist
+  },
+  data(){
+    return{
+
+    }
+  },
+  methods: {
+    ss: function(){
+      this.$children[0].searchArtistDialog = true
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 .bg-black {
