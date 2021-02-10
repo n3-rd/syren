@@ -18,8 +18,11 @@
           style="font-size: 19px"
           v-close-popup
         />
+   <div class="gt-sm q-px-lg">
+
         <div class="text-weight-bold text-center">Search Artist</div>
         <q-space />
+   </div>
         <q-input
           dark
           dense
@@ -43,6 +46,8 @@
       </q-bar>
 
       <q-card-section>
+   <div class="gt-sm q-px-lg">
+        
         <div id="start-area">
           <h3 class="text-center q-py-xl heading-text">
             Discover your favourite artist
@@ -55,9 +60,11 @@
             @keyup.enter="getArtist"
           />
         </div>
+   </div>
 
 <div class="main-area">
 
+<!-- Desktop -->
    <div class="gt-sm q-px-lg">
       <div class="row">
         <div
@@ -103,9 +110,63 @@
               <div class="text-weight-light">{{ artistInfo.album.title }}</div>
             </div>
           </q-img>
+          <q-item-section side top v-show="artistInfo.preview">
+          <div
+              class="text-center text-h6 text-weight-regular cursor-pointer"
+              @click="playSong(track.preview)"
+              v-ripple
+            >
+              preview <q-icon name="ion-play-circle" />
+            </div>
+          </q-item-section>
         </div>
       </div>
     </div>
+
+<!-- mobile -->
+      <q-list class="lt-md">
+    
+ <q-item v-for="artistInfo in artistData"
+          :key="artistInfo.title" v-ripple>
+          <!-- <q-popup-proxy style="padding: 0 !important">
+            <IndividualSong
+              :trackTitle="track.title"
+              :trackArtist="track.artist.name"
+              :trackCoverSmall="track.album.cover_small"
+              :trackCoverBig="track.album.cover_big"
+              :trackPreview="track.preview"
+            />
+          </q-popup-proxy> -->
+
+          <q-item-section top avatar>
+            <q-avatar square rounded>
+              <img
+                :src="artistInfo.album.cover_small"
+                alt="danny-lines-dwjfdde-DBZs-unsplash"
+                border="0"
+              />
+            </q-avatar>
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>{{ artistInfo.title }}</q-item-label>
+            <q-item-label caption>{{ artistInfo.artist.name }}</q-item-label>
+          </q-item-section>
+
+          <q-item-section side top v-show="artistInfo.preview">
+            <q-icon class="mobile-preview-icon" name="ion-play-circle" />
+            <q-item-label
+              @click="playSong(artistInfo.preview)"
+              class="text-weight-light"
+              caption
+              >Preview</q-item-label
+            >
+          </q-item-section>
+        </q-item>
+
+        <q-separator spaced inset="item" />
+
+      </q-list>
 
 
 
@@ -119,6 +180,8 @@
 </template>
 
 <script>
+import { Howl, Howler } from "howler";
+
 export default {
   data() {
     return {
@@ -137,6 +200,15 @@ export default {
           this.artistData = response.data.data;
           console.log(response.data.data)
         });
+    },
+      playSong: function (songPreview) {
+      this.previewPlaying = true;
+      Howler.stop();
+      var sound = new Howl({
+        src: songPreview,
+      });
+
+      sound.play();
     },
   },
 };
