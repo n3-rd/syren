@@ -62,7 +62,7 @@
           />
         </div>
 
-        <li v-for="trackInfo in trackData" :key="trackInfo.title">
+        <li v-for="trackInfo in trackData" :key="trackInfo.id">
             {{trackInfo.title}}
         </li>
 

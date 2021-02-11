@@ -70,7 +70,7 @@
         <div
           class="col-4 q-px-md q-pb-xl"
           v-for="artistInfo in artistData"
-          :key="artistInfo.title"
+          :key="artistInfo.id"
         >
           <q-popup-proxy>
           <IndividualSong
@@ -128,7 +128,7 @@
       <q-list class="lt-md">
     
  <q-item v-for="artistInfo in artistData"
-          :key="artistInfo.title" v-ripple>
+          :key="artistInfo.id" v-ripple>
           <q-popup-proxy style="padding: 0 !important">
             <IndividualSong
               :trackTitle="artistInfo.title"
