@@ -72,14 +72,15 @@
           v-for="artistInfo in artistData"
           :key="artistInfo.title"
         >
-          <!-- <q-popup-proxy>
-            <IndividualAlbum
-              :albumRecordType="album.record_type"
-              :AlbumCoverBig="album.cover_big"
-              :AlbumTitle="album.title"
-              :AlbumArtist="album.artist.name"
+          <q-popup-proxy>
+          <IndividualSong
+              :trackTitle="artistInfo.title"
+              :trackArtist="artistInfo.artist.name"
+              :trackCoverSmall="artistInfo.album.cover_small"
+              :trackCoverBig="artistInfo.album.cover_big"
+              :trackPreview="artistInfo.preview"
             />
-          </q-popup-proxy> -->
+          </q-popup-proxy>
           <q-img
             :src="artistInfo.album.cover_big"
             :img-style="{ borderRadius: '15px' }"

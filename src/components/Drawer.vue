@@ -2,6 +2,7 @@
   <div>
 
 <SearchArtist/>
+<SearchTrack/>
 
     <q-scroll-area>
       <q-img
@@ -27,7 +28,15 @@
           <q-item-section> Home </q-item-section>
         </q-item>
 
-        <q-item active clickable v-ripple @click="ss">
+         <q-item active clickable v-ripple @click="openSearchTracksDialog">
+          <q-item-section avatar>
+            <q-icon name="eva-headphones-outline" />
+          </q-item-section>
+
+          <q-item-section> Search Track</q-item-section>
+        </q-item>
+
+        <q-item active clickable v-ripple @click="openSearchArtistDialog">
           <q-item-section avatar>
             <q-icon name="eva-person-outline" />
           </q-item-section>
@@ -48,10 +57,11 @@
 </template>
 <script>
 import SearchArtist from './search_components/SearchArtist'
-
+import SearchTrack from './search_components/SearchTrack'
 export default {
   components: {
-SearchArtist
+SearchArtist,
+SearchTrack
   },
   data(){
     return{
@@ -59,8 +69,12 @@ SearchArtist
     }
   },
   methods: {
-    ss: function(){
+    openSearchArtistDialog: function(){
       this.$children[0].searchArtistDialog = true
+    },
+    openSearchTracksDialog: function(){
+      this.$children[1].searchTracksDialog = true
+      // console.log(this.$children)
     }
   }
 }

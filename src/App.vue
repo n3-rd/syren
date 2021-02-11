@@ -39,6 +39,7 @@
 
         <TopSongs />
         <SearchArtist/>
+        <SearchTrack/>
       </q-page-container>
     </q-layout>
   </div>
@@ -48,6 +49,8 @@
 import TopSongs from "./components/TopSongs.vue";
 import Drawer from "./components/Drawer";
 import SearchArtist from './components/search_components/SearchArtist'
+import SearchTrack from './components/search_components/SearchTrack'
+
 import { date } from "quasar";
 
 export default {
@@ -56,7 +59,8 @@ export default {
   components: {
     TopSongs,
     Drawer,
-    SearchArtist
+    SearchArtist,
+    SearchTrack
   },
 
   data() {
