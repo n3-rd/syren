@@ -49,6 +49,8 @@
 
       <q-card-section>
 
+   <div class="gt-sm q-px-lg">
+
  <div id="start-area">
           <h3 class="text-center q-py-xl heading-text">
             Discover your favourite Tracks
@@ -61,10 +63,72 @@
             @keyup.enter="getTrack"
           />
         </div>
+   </div>
 
-        <li v-for="trackInfo in trackData" :key="trackInfo.id">
+        <!-- <li v-for="trackInfo in trackData" :key="trackInfo.id">
             {{trackInfo.title}}
-        </li>
+        </li> -->
+
+
+<!-- Desktop -->
+
+ <div class="gt-sm q-px-lg">
+      <div class="row">
+        <div
+          class="col-4 q-px-md q-pb-xl"
+          v-for="trackInfo in trackData" :key="trackInfo.id"
+        >
+          <q-popup-proxy>
+          <IndividualSong
+              :trackTitle="trackInfo.title"
+              :trackArtist="trackInfo.artist.name"
+              :trackCoverSmall="trackInfo.album.cover_small"
+              :trackCoverBig="trackInfo.album.cover_big"
+              :trackPreview="trackInfo.preview"
+            />
+          </q-popup-proxy>
+          <q-img
+            :src="trackInfo.album.cover_big"
+            :img-style="{ borderRadius: '15px' }"
+            spinner-color="white"
+            class="rounded cursor-pointer"
+            width="100%"
+            v-ripple
+          >
+            <!-- error if image fails to load -->
+            <template v-slot:error>
+              <div
+                class="absolute-full flex flex-center bg-negative text-white"
+              >
+                Cannot load image
+              </div>
+            </template>
+            <!-- music indicator overlay -->
+            <div v-show="trackInfo.explicit_lyrics">
+              <div
+                class="absolute-top-left text-weight-bold text-center relative-position"
+              >
+                E<q-tooltip>May contain explicit lyrics</q-tooltip>
+              </div>
+            </div>
+            <!-- track details overlay -->
+            <div class="absolute-bottom text-subtitle1 text-center">
+              {{ trackInfo.title }}
+              <div class="text-weight-light">{{ trackInfo.artist.name }}</div>
+            </div>
+          </q-img>
+          <q-item-section side top v-show="trackInfo.preview">
+          <div
+              class="text-center text-h6 text-weight-regular cursor-pointer"
+              @click="playSong(track.preview)"
+              v-ripple
+            >
+              preview <q-icon name="ion-play-circle" />
+            </div>
+          </q-item-section>
+        </div>
+      </div>
+    </div>
 
 
       </q-card-section>
@@ -75,7 +139,11 @@
 </template>
 
 <script>
+import IndividualSong from '../IndividualSong'
 export default {
+    components: {
+IndividualSong
+    },
     data(){
         return{
             searchTracksDialog: false,
